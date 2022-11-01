@@ -9,7 +9,7 @@ on:
       - master
       - develop
 name: "Build & Release"
-jobs: 
+jobs:
   build:
     name: Build & Release
     runs-on: ubuntu-latest
@@ -17,7 +17,7 @@ jobs:
       - uses: actions/checkout@v1
       - uses: actions/setup-java@v1
         with:
-          java-versions: '12.x'
+          java-version: '12.x'
       - uses: subosito/flutter-action@v1
         with:
           flutter-version: '3.3.4'
@@ -27,11 +27,5 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           artifacts: "build/app/outputs/apk/debug/*"
-          tag: v1.0.${{github.run_number}}
-          token: ${{secrets.TOKEN}}
-
-
-
-
-#push to master, main, develop
-#pull request on main master
+          tag: v1.0.${{ github.run_number }}
+          token: ${{ secrets.TOKEN }}
